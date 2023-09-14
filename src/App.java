@@ -37,6 +37,8 @@ public class App {
         Apto ap15 = new Apto("ap15", 15, 9, true);
         ambience.addApto(ap15);
 
+        Prop propietario = new Prop("Albérico", 21, 99999, "m");
+
         while (true){
             List<Integer> aptosAvailabeNumbers = new ArrayList<>();
 
@@ -64,16 +66,21 @@ public class App {
                 
                 Integer aptoResponse = scan.nextInt();   
                 Boolean aptoFound = false;
+                Apto aptoChosen;
                 for (Integer j : aptosAvailabeNumbers) {
                     if (aptoResponse == j){
                         System.out.println("Você selecionou o AP: "+ aptoResponse);
                         aptoFound = true;
+                        aptoChosen = aptoResponse;
                         break;
                     }
-                } 
-                if (!aptoFound) {
+                }if (!aptoFound) {
                     System.out.println("Selecione um apartamento disponivel");
                     break;
+                }
+
+                if (aptoFound) {
+                    propietario.addMorador(aptoChosen);
                 }
                     
 
