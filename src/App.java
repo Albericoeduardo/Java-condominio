@@ -53,7 +53,6 @@ public class App {
             if (response == 1){
                 ambience.availabeAptos();
                 System.out.println("Se deseja reservar um AP, selecione o seu número: ");
-                Integer aptoResponse = scan.nextInt();    
                 
                 for (Apto i : ambience.apartamentos){
                     if (i.availabe == true){
@@ -62,16 +61,21 @@ public class App {
                         continue;
                     }
                 }
-
+                
+                Integer aptoResponse = scan.nextInt();   
+                Boolean aptoFound = false;
                 for (Integer j : aptosAvailabeNumbers) {
                     if (aptoResponse == j){
                         System.out.println("Você selecionou o AP: "+ aptoResponse);
-                    } else {
-                        System.out.println("Selecione um apartamento disponivel");
+                        aptoFound = true;
                         break;
                     }
+                } 
+                if (!aptoFound) {
+                    System.out.println("Selecione um apartamento disponivel");
+                    break;
                 }
-
+                    
 
             } else if (response == 2) {
                 ambience.aptos();
