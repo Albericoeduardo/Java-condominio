@@ -66,20 +66,18 @@ public class App {
                 
                 Integer aptoResponse = scan.nextInt();   
                 Boolean aptoFound = false;
-                Apto aptoChosen;
-                for (Integer j : aptosAvailabeNumbers) {
-                    if (aptoResponse == j){
+                Apto aptoChosen = null;
+                for (Apto ap : ambience.apartamentos) {
+                    if (ap.number == aptoResponse && ap.availabe){
                         System.out.println("Você selecionou o AP: "+ aptoResponse);
                         aptoFound = true;
-                        aptoChosen = aptoResponse;
+                        aptoChosen = ap;
                         break;
                     }
                 }if (!aptoFound) {
                     System.out.println("Selecione um apartamento disponivel");
                     break;
-                }
-
-                if (aptoFound) {
+                }else {
                     propietario.addMorador(aptoChosen);
                 }
                     

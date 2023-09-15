@@ -16,6 +16,6 @@ public class Prop {
     
     public void addMorador(Apto ap){
         ap.availabe = false;
-        System.out.println("O "+ap+"agora está ocupado");
+        System.out.println("O "+ap.number+" agora está ocupado");
     }
 }
