@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class Prop {
+    Scanner scan = new Scanner(System.in);
+
     public String name;
     public Integer idade;
     public Integer phoneNumber;
@@ -15,7 +19,7 @@ public class Prop {
     }
     
     public void addMorador(Apto ap){
-        ap.availabe = false;
         System.out.println("O "+ap.number+" agora está ocupado");
+        ap.availabe = false;
     }
 }
