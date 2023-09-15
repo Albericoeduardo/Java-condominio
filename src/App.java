@@ -39,7 +39,8 @@ public class App {
 
         Prop propietario = new Prop("Albérico", 21, 99999, "m");
 
-        while (true){
+        Boolean sair = false;
+        while (!sair){
             List<Integer> aptosAvailabeNumbers = new ArrayList<>();
 
             System.out.println("Seja bem vindo ao hotel Ambience Residence 1!");
@@ -52,51 +53,55 @@ public class App {
 
             Integer response = scan.nextInt();
 
-            if (response == 1){
-                ambience.availabeAptos();
-                System.out.println("Se deseja reservar um AP, selecione o seu número: ");
-                
-                for (Apto i : ambience.apartamentos){
-                    if (i.availabe == true){
-                        aptosAvailabeNumbers.add(i.number);
-                    } else {
-                        continue;
-                    }
-                }
-                
-                Integer aptoResponse = scan.nextInt();   
-                Boolean aptoFound = false;
-                Apto aptoChosen = null;
-                for (Apto ap : ambience.apartamentos) {
-                    if (ap.number == aptoResponse && ap.availabe){
-                        System.out.println("Você selecionou o AP: "+ aptoResponse);
-                        aptoFound = true;
-                        aptoChosen = ap;
-                        break;
-                    }
-                }if (!aptoFound) {
-                    System.out.println("Selecione um apartamento disponivel");
-                    break;
-                }else {
-                    propietario.addMorador(aptoChosen);
-                }
+            switch (response){
+
+                case 1:
+                    ambience.availabeAptos();
+                    System.out.println("Se deseja reservar um AP, selecione o seu número: ");
                     
+                    for (Apto i : ambience.apartamentos){
+                        if (i.availabe == true){
+                            aptosAvailabeNumbers.add(i.number);
+                        } else {
+                            continue;
+                        }
+                    }
+                    
+                    Integer aptoResponse = scan.nextInt();   
+                    Boolean aptoFound = false;
+                    Apto aptoChosen = null;
+                    for (Apto ap : ambience.apartamentos) {
+                        if (ap.number == aptoResponse && ap.availabe){
+                            System.out.println("Você selecionou o AP: "+ aptoResponse);
+                            aptoFound = true;
+                            aptoChosen = ap;
+                            break;
+                        }
+                    }if (!aptoFound) {
+                        System.out.println("Selecione um apartamento disponivel");
+                    }else {
+                        propietario.addMorador(aptoChosen);
+                    }
+                    break;
 
-            } else if (response == 2) {
-                ambience.aptos();
-                break;
-            } else if (response == 3) {
-                ambience.availabeAptos();
-                break;
-            } else if (response == 4) {
-                ambience.occupiedAptos();
-                break;
-            } else if (response == 0){
-                System.out.println("Muito obrigado e volte sempre");
-                break;
-            }
-
+                case 2:
+                    ambience.aptos();
+                    break;
+                case 3: 
+                    ambience.availabeAptos();
+                    break;
+                case 4:
+                    ambience.occupiedAptos();
+                    break;
+                case 0:
+                    System.out.println("Muito obrigado e volte sempre");
+                    sair = true;
+                    break;
+                default:
+                    System.out.println("Selecione uma opção válida");
+                    break;
+            }   
         }
-        
-    }
+
+    }     
 }
