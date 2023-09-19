@@ -102,6 +102,6 @@ public class App {
                     break;
             }   
         }
-
+        scan.close();
     }     
 }
